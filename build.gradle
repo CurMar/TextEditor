@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'net.curmar.txted'
+version = '1.0-SNAPSHOT'
+
+mainClassName = 'net.curmar.txted.Main'
+
+application {
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+
+javafx {
+    version = '22.0.1'
+    modules = ['javafx.base', 'javafx.controls']
+}

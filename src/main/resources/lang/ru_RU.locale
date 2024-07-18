@@ -1,4 +1,5 @@
 app.test_locale=Тестовое сообщение.
 gui.menu_file=Файл
 gui.menu_settings=Настройки
+gui.menu_app=Программа
 gui.menu_about=О программе

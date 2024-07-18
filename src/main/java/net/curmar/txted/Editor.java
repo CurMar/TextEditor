@@ -153,7 +153,7 @@ public class Editor {
     }
 
     class AboutMenu {
-        private final Menu MENU = new Menu("App");
+        private final Menu MENU = new Menu(translator.getTranslatedText("gui.menu_app"));
         private final MenuItem ABOUT = new MenuItem(translator.getTranslatedText("gui.menu_about"));
 
         public AboutMenu() {

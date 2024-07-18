@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 
-import javax.swing.event.HyperlinkEvent;
 
 public class Editor {
 
+    private final TranslatedString translator;
     private final Scene scene;
     private final Stage stage;
     private final VBox pane;
-    private final MenuBar menubar = new MenuBar(new Editor.FileMenu().MENU, new AboutMenu().MENU);
+    private final MenuBar menubar;
     private final TextArea text;
     private Optional<File> file;
     private boolean isChanged;
@@ -27,6 +27,8 @@ public class Editor {
     public static final String NEW_FILE_NAME = "New file.txt";
 
     public Editor(Stage stage) {
+        translator = new TranslatedString("ru_RU");
+        menubar = new MenuBar(new Editor.FileMenu().MENU, new AboutMenu().MENU, new SettingsMenu().MENU);
         text = new TextArea();
         text.positionCaret(0);
         text.textProperty().addListener(x -> {
@@ -45,6 +47,8 @@ public class Editor {
             safeExit();
             if (isChanged) e.consume();
         });
+
+
         this.stage.show();
     }
 
@@ -121,7 +125,7 @@ public class Editor {
     }
 
     class FileMenu {
-        private final Menu MENU = new Menu("File");
+        private final Menu MENU = new Menu(translator.getTranslatedText("gui.menu_file"));
         private final MenuItem OPEN = new MenuItem("Open");
         private final MenuItem SAVE = new MenuItem("Save");
         private final MenuItem SAVE_AS = new MenuItem("Save as");
@@ -137,9 +141,20 @@ public class Editor {
         }
     }
 
+    class SettingsMenu {
+        private final Menu MENU = new Menu(translator.getTranslatedText("gui.menu_settings"));
+        private final MenuItem LANG = new MenuItem("Language");
+
+        public SettingsMenu() {
+            MENU.getItems().add(LANG);
+            LANG.setOnAction(x -> {
+            });
+        }
+    }
+
     class AboutMenu {
         private final Menu MENU = new Menu("App");
-        private final MenuItem ABOUT = new MenuItem("About");
+        private final MenuItem ABOUT = new MenuItem(translator.getTranslatedText("gui.menu_about"));
 
         public AboutMenu() {
             MENU.getItems().add(ABOUT);

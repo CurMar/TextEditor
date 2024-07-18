@@ -12,8 +12,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 
-import javax.swing.event.HyperlinkEvent;
-
 public class Editor {
 
     private final Scene scene;

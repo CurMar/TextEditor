@@ -7,3 +7,12 @@ gui.menu_settings=Настройки
 gui.menu_settings.language=Язык
 gui.menu_app=Программа
 gui.menu_about=О программе
+
+gui.confirmation=Подтверждение
+gui.confirmation_savechanges=Сохранить изменения?
+
+gui.button.yes=Да
+gui.button.no=Нет
+gui.button.cancel=Отмена
+
+editor.newfilename=Новый файл.txt

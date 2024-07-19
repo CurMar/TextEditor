@@ -24,7 +24,7 @@ public class Editor {
     private Optional<File> file;
     private boolean isChanged;
 
-    public static final String NEW_FILE_NAME = "New file.txt";
+    public static String NEW_FILE_NAME;
 
     public Editor(Stage stage) {
         translator = new TranslatedString("ru_RU");
@@ -48,6 +48,7 @@ public class Editor {
             if (isChanged) e.consume();
         });
 
+        NEW_FILE_NAME = translator.getTranslatedText("editor.newfilename");
 
         this.stage.show();
     }
@@ -109,17 +110,22 @@ public class Editor {
         if (isChanged) stage.setTitle(stage.getTitle() + "*");
     }
 
+
     public void safeExit() {
         if (!isChanged) {
             stage.close();
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.NONE, "Save the changes?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.setTitle("Confirmation");
+        ButtonType bYes = new ButtonType(translator.getTranslatedText("gui.button.yes"), ButtonBar.ButtonData.YES);
+        ButtonType bNo = new ButtonType(translator.getTranslatedText("gui.button.no"), ButtonBar.ButtonData.NO);
+        ButtonType bCancel = new ButtonType(translator.getTranslatedText("gui.button.cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Alert alert = new Alert(Alert.AlertType.NONE, translator.getTranslatedText("gui.confirmation_savechanges"), bYes, bNo, bCancel);
+        alert.setTitle(translator.getTranslatedText("gui.confirmation"));
         alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.YES) {
+            if (response == bYes) {
                 saveFile();
-            } else if (response == ButtonType.NO)
+            } else if (response == bNo)
                 stage.close();
         });
     }

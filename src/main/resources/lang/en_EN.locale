@@ -7,3 +7,12 @@ gui.menu_settings=Settings
 gui.menu_settings.language=Language
 gui.menu_app=App
 gui.menu_about=About
+
+gui.confirmation=Confirmation
+gui.confirmation_savechanges=Save the changes?
+
+gui.button.yes=Yes
+gui.button.no=No
+gui.button.cancel=Cancel
+
+editor.newfilename=New file.txt

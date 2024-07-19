@@ -20,7 +20,7 @@ public class TranslatedString {
                 Map<String, String> pairs = new HashMap<>();
                 List<String> lines = Files.readAllLines(f.toPath());
                 for (String s : lines)
-                    pairs.put(s.split("=")[0], s.split("=")[1]);
+                    if (!s.isEmpty()) pairs.put(s.split("=")[0], s.split("=")[1]);
                 langs.put(f.getName().split("\\.")[0], pairs);
             }
         } catch (Exception e) {
@@ -38,7 +38,7 @@ public class TranslatedString {
     }
 
     public String getTranslatedText(String s) {
-        return langs.get(lang).get(s);
+        return langs.get(lang).getOrDefault(s, s);
     }
 
     public void setLang(String lang) {

@@ -16,3 +16,6 @@ gui.button.no=Нет
 gui.button.cancel=Отмена
 
 editor.newfilename=Новый файл.txt
+
+editor.info.title=Информация о программе
+editor.info=CurMar текстовый редактор\nРазработчик: CurMar\nВерсия: 0.1

@@ -16,3 +16,5 @@ gui.button.no=No
 gui.button.cancel=Cancel
 
 editor.newfilename=New file.txt
+editor.info.title=Information about program
+editor.info=CurMar text editor\nDeveloper: CurMar\nVersion: 0.1

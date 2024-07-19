@@ -27,7 +27,7 @@ public class Editor {
     public static String NEW_FILE_NAME;
 
     public Editor(Stage stage) {
-        translator = new TranslatedString("ru_RU");
+        translator = new TranslatedString();
         menubar = new MenuBar(new Editor.FileMenu().MENU, new AboutMenu().MENU, new SettingsMenu().MENU);
         text = new TextArea();
         text.positionCaret(0);
@@ -165,8 +165,8 @@ public class Editor {
         public AboutMenu() {
             MENU.getItems().add(ABOUT);
             ABOUT.setOnAction(x -> {
-                Alert message = new Alert(Alert.AlertType.INFORMATION, "CurMar text editor\nDeveloper: CurMar\nVersion: 0.1");
-                message.setHeaderText("Information about program");
+                Alert message = new Alert(Alert.AlertType.INFORMATION, translator.getTranslatedText("editor.info"));
+                        message.setHeaderText(translator.getTranslatedText("editor.info.title"));
                 message.showAndWait();
             });
 

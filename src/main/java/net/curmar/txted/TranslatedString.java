@@ -1,23 +1,18 @@
 package net.curmar.txted;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
 public class TranslatedString {
-    private final Map<String, Map<String, String>> langs = new HashMap<>();
+
+    private static String path = TranslatedString.class.getClassLoader().getResource("lang").getPath();
+    private static final Map<String, Map<String, String>> langs = new HashMap<>();
     private String lang;
-    private String path = getClass().getClassLoader().getResource("lang").getPath();
 
-    public TranslatedString() {
-        this("en_EN");
-    }
-
-    public TranslatedString(String lang) {
-        this.lang = lang;
+    static {
         try {
             File langDir = new File(path);
             File[] locFiles = langDir.listFiles((dir, name) -> name.endsWith(".locale"));
@@ -31,6 +26,15 @@ public class TranslatedString {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public TranslatedString() {
+        this("en_EN");
+    }
+
+    public TranslatedString(String lang) {
+        this.lang = lang;
+
     }
 
     public String getTranslatedText(String s) {

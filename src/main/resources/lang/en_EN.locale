@@ -1,5 +1,9 @@
-app.test_locale=Test message.
 gui.menu_file=File
+gui.menu_file.open=Open
+gui.menu_file.save=Save
+gui.menu_file.saveas=Save as
+gui.menu_file.exit=Exit
 gui.menu_settings=Settings
+gui.menu_settings.language=Language
 gui.menu_app=App
 gui.menu_about=About

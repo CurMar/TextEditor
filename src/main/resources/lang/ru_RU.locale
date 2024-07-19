@@ -1,5 +1,9 @@
-app.test_locale=Тестовое сообщение.
 gui.menu_file=Файл
+gui.menu_file.open=Открыть
+gui.menu_file.save=Сохранить
+gui.menu_file.saveas=Сохранить как
+gui.menu_file.exit=Выход
 gui.menu_settings=Настройки
+gui.menu_settings.language=Язык
 gui.menu_app=Программа
 gui.menu_about=О программе

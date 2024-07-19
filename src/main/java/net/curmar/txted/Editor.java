@@ -54,7 +54,7 @@ public class Editor {
 
     public void selectFile() {
         FileChooser fc = new FileChooser();
-        fc.setTitle("Open");
+        fc.setTitle(translator.getTranslatedText("gui.menu_file.open"));
         openFile(fc.showOpenDialog(stage));
     }
 
@@ -94,7 +94,7 @@ public class Editor {
 
     public void saveFileAs() {
         FileChooser fc = new FileChooser();
-        fc.setTitle("Save");
+        fc.setTitle(translator.getTranslatedText("gui.menu_file.save"));
         fc.setInitialFileName(getFileName());
         file = Optional.ofNullable(fc.showSaveDialog(stage));
         if (file.isPresent()) saveFile();
@@ -126,10 +126,10 @@ public class Editor {
 
     class FileMenu {
         private final Menu MENU = new Menu(translator.getTranslatedText("gui.menu_file"));
-        private final MenuItem OPEN = new MenuItem("Open");
-        private final MenuItem SAVE = new MenuItem("Save");
-        private final MenuItem SAVE_AS = new MenuItem("Save as");
-        private final MenuItem EXIT = new MenuItem("Exit");
+        private final MenuItem OPEN = new MenuItem(translator.getTranslatedText("gui.menu_file.open"));
+        private final MenuItem SAVE = new MenuItem(translator.getTranslatedText("gui.menu_file.save"));
+        private final MenuItem SAVE_AS = new MenuItem(translator.getTranslatedText("gui.menu_file.saveas"));
+        private final MenuItem EXIT = new MenuItem(translator.getTranslatedText("gui.menu_file.exit"));
 
         public FileMenu() {
             MENU.getItems().addAll(OPEN, SAVE, SAVE_AS, EXIT);
@@ -143,7 +143,7 @@ public class Editor {
 
     class SettingsMenu {
         private final Menu MENU = new Menu(translator.getTranslatedText("gui.menu_settings"));
-        private final MenuItem LANG = new MenuItem("Language");
+        private final MenuItem LANG = new MenuItem(translator.getTranslatedText("gui.menu_settings.language"));
 
         public SettingsMenu() {
             MENU.getItems().add(LANG);

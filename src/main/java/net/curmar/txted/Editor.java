@@ -166,7 +166,7 @@ public class Editor {
             MENU.getItems().add(ABOUT);
             ABOUT.setOnAction(x -> {
                 Alert message = new Alert(Alert.AlertType.INFORMATION, translator.getTranslatedText("editor.info"));
-                        message.setHeaderText(translator.getTranslatedText("editor.info.title"));
+                message.setHeaderText(translator.getTranslatedText("editor.info.title"));
                 message.showAndWait();
             });
 

@@ -1,28 +1,72 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'net.curmar.txted'
-version = '1.0-SNAPSHOT'
-
-mainClassName = 'net.curmar.txted.Main'
-
-application {
-
-}
+group 'net.curmar.txted'
+version '0.1'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
+def javafxVersion = "22.0.2"
 
+dependencies {
+    implementation "org.openjfx:javafx-base:${javafxVersion}:win"
+    implementation "org.openjfx:javafx-base:${javafxVersion}:linux"
+    implementation "org.openjfx:javafx-base:${javafxVersion}:mac"
+
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:win"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:linux"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:mac"
+
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:win"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:linux"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:mac"
 }
 
+application {
+    mainClass = 'net.curmar.txted.Main'
+}
 
-javafx {
-    version = '22.0.1'
-    modules = ['javafx.base', 'javafx.controls']
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'net.curmar.txted.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+compileJava {
+    options.compilerArgs += [
+            '--module-path', classpath.asPath,
+            '--add-modules', 'javafx.controls,javafx.graphics'
+    ]
+}
+
+run {
+    jvmArgs = [
+            '--module-path', classpath.asPath,
+            '--add-modules', 'javafx.controls,javafx.graphics'
+    ]
+}
+
+task buildAndRun {
+    dependsOn build
+    doLast {
+        def jarFile = tasks.jar.archiveFile.get().asFile
+        javaexec {
+            classpath = files(jarFile)
+            main = 'net.curmar.txted.Main'
+            jvmArgs = [
+                    '--module-path', configurations.runtimeClasspath.asPath,
+                    '--add-modules', 'javafx.controls,javafx.graphics'
+            ]
+        }
+    }
 }
